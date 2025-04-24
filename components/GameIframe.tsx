@@ -182,18 +182,9 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
 
   const selectedGame = games.find((game) => game.name === currentGame) || games[0]
 
+  // 强制声明为标准的 Document 类型
   const handleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      if (iframeRef.current?.requestFullscreen) {
-        iframeRef.current.requestFullscreen()
-        setIsFullscreen(true)
-      }
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen()
-        setIsFullscreen(false)
-      }
-    }
+
   }
 
   return (
