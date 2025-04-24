@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Hero from "@/components/Hero"
 import GameIframe from "@/components/GameIframe"
 import GameplayGuide from "@/components/GameplayGuide"
 import GameplaySteps from "@/components/GameplaySteps"
