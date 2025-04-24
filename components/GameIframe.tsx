@@ -26,7 +26,7 @@ const games = [
   },
   {
     name: "Crazy Cattle 3D (Mobile Browser Version)",
-    icon: "/images/new_mods/crazy-cattle-3d-m160x96.jpg",
+    icon: "/images/crazycattle/crazy-cattle-3d-m160x96.jpg",
     url: "https://smash-karts.org/crazy-cattle-3d.embed",
     info: {
       developer: "Crazy Cattle 3D (Mobile Browser Version)",
