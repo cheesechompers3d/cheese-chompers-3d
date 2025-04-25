@@ -8,7 +8,7 @@ const games = [
   {
     name: "Cheese Chompers 3D",
     icon: "/images/crazycattle/Cheese Chompers 3D.jpg",
-    url: "https://epicmathpractice.netlify.app/cheesechompers3dweb/",
+    url: "https://html-classic.itch.zone/html/13482246/CheeseChompers3DWeb/index.html",
     info: {
       developer: "Cheese Chompers 3D",
       rating: "8.9 (338,606 votes)",
@@ -18,7 +18,7 @@ const games = [
       technology: "HTML5",
       platform: "Browser (desktop, mobile, tablet)",
       tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
-      description: "cheesechompers3d is a browser-based, animal-themed knockout game where you control a goofy rat in an intense free-for-all arena. Originally modded from Crazy Cattle 3D, this version replaces the sheep with comical rats, introduces an entirely new interface and sound design, and delivers a cheese-fueled challenge like no other. Built in Unity, it offers fast-paced gameplay with fun twists, like speed-boosting flips and unpredictable collisions.\n" +
+      description: "Cheese Chompers 3D is a browser-based, animal-themed knockout game where you control a goofy rat in an intense free-for-all arena. Originally modded from Crazy Cattle 3D, this version replaces the sheep with comical rats, introduces an entirely new interface and sound design, and delivers a cheese-fueled challenge like no other. Built in Unity, it offers fast-paced gameplay with fun twists, like speed-boosting flips and unpredictable collisions.\n" +
           "\n" +
           "Though the game currently only includes one map and does not display the number of opponents, the chaotic fun is real and the energy never dips. It's a wild ride built for fans of funny animal physics and instant web play..",
       controls: "Use a mouse to play the game.",
