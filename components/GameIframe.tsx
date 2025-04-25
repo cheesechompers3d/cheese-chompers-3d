@@ -8,7 +8,7 @@ const games = [
   {
     name: "Cheese Chompers 3D",
     icon: "/images/crazycattle/Cheese Chompers 3D.jpg",
-    url: "https://html-classic.itch.zone/html/13482246/CheeseChompers3DWeb/index.html",
+    url: "https://html-classic.itch.zone/html/13490171/CheeseChompers3DWeb/index.html",
     info: {
       developer: "Cheese Chompers 3D",
       rating: "8.9 (338,606 votes)",
@@ -223,6 +223,7 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
                 allowFullScreen
               />
             </div>
+
             {selectedGame.info && (
               <>
                 <div className="bg-gray-800 p-6 rounded-lg mb-8">
