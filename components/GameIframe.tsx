@@ -8,7 +8,7 @@ const games = [
   {
     name: "Cheese Chompers 3D",
     icon: "/images/crazycattle/Cheese Chompers 3D.jpg",
-    url: "https://crazycattle-3d.io/cheese-chompers-3d.embed",
+    url: "https://epicmathpractice.netlify.app/cheesechompers3dweb/",
     info: {
       developer: "Cheese Chompers 3D",
       rating: "8.9 (338,606 votes)",

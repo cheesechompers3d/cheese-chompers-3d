@@ -15,6 +15,35 @@ const GameplayGuide = () => {
           </div>
 
         </div>
+
+        {/* Gameplay Video */}
+        <div className="bg-gray-800 rounded-lg p-12">
+          <h3 className="text-2xl font-bold mb-8">Gameplay Video</h3>
+          <div className="max-w-[1400px] mx-auto h-[800px]">
+            <iframe
+                src="https://www.youtube.com/embed/zU0L5ueGA3o?si=weRGQxlS3u9V1u3O"
+                title="Official Gameplay Trailer"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full rounded-lg"
+            ></iframe>
+          </div>
+          <p className="text-gray-300 text-lg text-center mt-6">
+            Official Gameplay Trailer
+          </p>
+          <div className="max-w-[1400px] mx-auto h-[800px]">
+            <iframe
+                src="https://www.youtube.com/embed/zU0L5ueGA3o?si=weRGQxlS3u9V1u3O"
+                title="Behind The Scenes: Making of Cheese Chompers"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full rounded-lg"
+            ></iframe>
+          </div>
+          <p className="text-gray-300 text-lg text-center mt-6">
+            Behind The Scenes: Making of Cheese Chompers
+          </p>
+        </div>
       </div>
     </section>
   )
