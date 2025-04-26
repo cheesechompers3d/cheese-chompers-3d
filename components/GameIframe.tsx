@@ -41,6 +41,41 @@ const games = [
       controls: "Use a mouse to play the game.",
     },
   },
+
+  {
+    "name": "Crazy Kitty 3D",
+    "icon": "/images/crazycattle/Crazy Kitty 3D.jpg",
+    "url": "https://html-classic.itch.zone/html/13447164/Website/index.html",
+    info: {
+      developer: "Crazy Cattle 3D Web Port",
+      rating: "8.9 (338,606 votes)",
+      votes: "476",
+      released: "October 2024",
+      lastUpdated: "Nov 20, 2024",
+      technology: "HTML5",
+      platform: "Browser (desktop, mobile, tablet)",
+      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
+      description: "Crazy Kitty 3D is a chaotic battle royale rage game featuring feisty kittens. Claw your way through madness, survive the fur-fueled frenzy, and be the last...",
+      controls: "Use a mouse to play the game.",
+    },
+  },
+  {
+    "name": "Crazy Chicken 3D",
+    "icon": "/images/crazycattle/Crazy Chicken 3D.jpg",
+    "url": "https://html-classic.itch.zone/html/13448030/crazychicken%20web%20port/index.html",
+    info: {
+      developer: "Crazy Chicken 3D Game",
+      rating: "8.9 (338,606 votes)",
+      votes: "476",
+      released: "October 2024",
+      lastUpdated: "Nov 20, 2024",
+      technology: "HTML5",
+      platform: "Browser (desktop, mobile, tablet)",
+      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
+      description: "Get ready for the wildest and most thrilling sheep battle royale experience with Crazy Cattle 3D Unlimited! This highly anticipated release takes everything fans loved about the previous installments and cranks it up a notch, offering unlimited fun, intense physics, and a fresh new twist to the genre.",
+      controls: "Use a mouse to play the game.",
+    },
+  },
   {
     name: "Crazy Cattle 3D Plus",
     icon: "/images/crazycattle/Crazy Cattle 3D Plus.jpg",
@@ -115,41 +150,6 @@ const games = [
     },
   },
   {
-    "name": "Crazy Cattle 3D Web Port",
-    "icon": "/images/crazycattle/Crazy Cattle 3D Web Port.jpg",
-    "url": "https://crazycattle-3d.io/crazy-cattle-3d-web-port.embed",
-    info: {
-      developer: "Crazy Cattle 3D Web Port",
-      rating: "8.9 (338,606 votes)",
-      votes: "476",
-      released: "October 2024",
-      lastUpdated: "Nov 20, 2024",
-      technology: "HTML5",
-      platform: "Browser (desktop, mobile, tablet)",
-      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
-      description: "The chaos is back, sharper and smoother than ever! Crazy Cattle 3D Web Port brings the iconic cow combat game to your browser with enhanced graphics and classic controls.",
-      controls: "Use a mouse to play the game.",
-    },
-  },
-  {
-    "name": "Crazy Cattle 3D Unlimited",
-    "icon": "/images/crazycattle/Crazy Cattle 3D Unlimited.jpg",
-    "url": "https://wowtbc.net/sprunkin/revamped-2/index.html",
-    info: {
-      developer: "Squidki Game",
-      rating: "8.9 (338,606 votes)",
-      votes: "476",
-      released: "October 2024",
-      lastUpdated: "Nov 20, 2024",
-      technology: "HTML5",
-      platform: "Browser (desktop, mobile, tablet)",
-      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
-      description: "Get ready for the wildest and most thrilling sheep battle royale experience with Crazy Cattle 3D Unlimited! This highly anticipated release takes everything fans loved about the previous installments and cranks it up a notch, offering unlimited fun, intense physics, and a fresh new twist to the genre.",
-      controls: "Use a mouse to play the game.",
-    },
-  },
-
-  {
     "name": "Crazy Cattle 3D+",
     "icon": "/images/crazycattle/Crazy Cattle 3D+.jpg",
     "url": "https://crazycattle-3d.io/crazy-cattle-3d-.embed",
@@ -163,6 +163,125 @@ const games = [
       platform: "Browser (desktop, mobile, tablet)",
       tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
       description: "Get ready for a barnyard battle like no other! Crazy Cattle 3D+ cranks up the chaos with upgraded visuals, hilarious cow combat, and a ticking time challenge.",
+      controls: "Use a mouse to play the game.",
+    },
+  },
+  {
+    "name": "Fall Guys",
+    "icon": "/images/crazycattle/Fall Guys.jpg",
+    "url": "https://crazycattle-3d.io/crazy-cattle-3d-.embed",
+    info: {
+      developer: "Fall Guys",
+      rating: "8.9 (338,606 votes)",
+      votes: "476",
+      released: "October 2024",
+      lastUpdated: "Nov 20, 2024",
+      technology: "HTML5",
+      platform: "Browser (desktop, mobile, tablet)",
+      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
+      description: "Dive into the hilarious chaos of the Fall Guys game, where colorful bean-shaped characters compete in wild, wipeout-style obstacle courses. The cartoonish physics, unpredictable outcomes, and vibrant stages make Fall Guys a must-play experience for all ages.",
+      controls: "Use a mouse to play the game.",
+    },
+  },
+  {
+    "name": "Crazy Sheep 3D",
+    "icon": "/images/crazycattle/Crazy Sheep 3D.jpg",
+    "url": "https://play.gamepix.com/crazy-sheep/embed?sid=e4515",
+    info: {
+      developer: "Crazy Sheep 3D",
+      rating: "8.9 (338,606 votes)",
+      votes: "476",
+      released: "October 2024",
+      lastUpdated: "Nov 20, 2024",
+      technology: "HTML5",
+      platform: "Browser (desktop, mobile, tablet)",
+      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
+      description: "Crazy Sheep 3D is a fast-paced, physics-powered animal battle game where fluffy sheep go head-to-head in chaotic arenas. Packed with bouncing bodies, ragdoll action, and hilarious knockouts, this game turns the barnyard into a battlefield. Whether you’re charging foes or dodging danger, every round is a wild ride.",
+      controls: "Use a mouse to play the game.",
+    },
+  },
+  {
+    "name": "Smash Karts",
+    "icon": "/images/crazycattle/data image game smash-karts-game.jpg.png",
+    "url": "https://crazycattle-3d.io/smash-karts.embed",
+    info: {
+      developer: "Crazy Sheep 3D",
+      rating: "8.9 (338,606 votes)",
+      votes: "476",
+      released: "October 2024",
+      lastUpdated: "Nov 20, 2024",
+      technology: "HTML5",
+      platform: "Browser (desktop, mobile, tablet)",
+      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
+      description: "Whether you're racing for fun or blasting your way to the top, Smash Karts delivers non-stop action that keeps you coming back for more! Don’t hesitate, click Start Play to enjoy.",
+      controls: "Use a mouse to play the game.",
+    },
+  },
+  {
+    "name": "Animal Rampage 3D",
+    "icon": "/images/crazycattle/data image game animal-rampage-3d.jpg.png",
+    "url": "https://chillguyclicker.io/animal-rampage-3d.embed",
+    info: {
+      developer: "Crazy Sheep 3D",
+      rating: "8.9 (338,606 votes)",
+      votes: "476",
+      released: "October 2024",
+      lastUpdated: "Nov 20, 2024",
+      technology: "HTML5",
+      platform: "Browser (desktop, mobile, tablet)",
+      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
+      description: "Unleash chaos in the Animal Rampage 3D game, an action-packed simulator where you control wild beasts to destroy a vibrant 3D city. Smash cars, topple buildings, and dodge SWAT teams to dominate!",
+      controls: "Use a mouse to play the game.",
+    },
+  },
+  {
+    "name": "Stumble Guys",
+    "icon": "/images/crazycattle/data image game stumble-guys-game.jpg.png",
+    "url": "https://crazycattle-3d.io/stumble-guys.embed",
+    info: {
+      developer: "Stumble Guys",
+      rating: "8.9 (338,606 votes)",
+      votes: "476",
+      released: "October 2024",
+      lastUpdated: "Nov 20, 2024",
+      technology: "HTML5",
+      platform: "Browser (desktop, mobile, tablet)",
+      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
+      description: "Stumble Guys is an exciting multiplayer party game where up to 32 players race through chaotic obstacle courses filled with hilarious challenges. Compete to be the last one standing and claim victory in this fast-paced, fun-filled adventure!",
+      controls: "Use a mouse to play the game.",
+    },
+  },
+  {
+    "name": "Party Animals",
+    "icon": "/images/crazycattle/data image game party-animals.jpg.png",
+    "url": "https://chillguyclicker.io/animal-rampage-3d.embed",
+    info: {
+      developer: "Party Animals",
+      rating: "8.9 (338,606 votes)",
+      votes: "476",
+      released: "October 2024",
+      lastUpdated: "Nov 20, 2024",
+      technology: "HTML5",
+      platform: "Browser (desktop, mobile, tablet)",
+      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
+      description: "Party Animals is a hilarious, physics-based multiplayer brawler game where players take control of plush-like animals—puppies, kittens, ducks, dinosaurs, and more—and engage in slapstick fights across dynamic arenas. Developed by Recreate Games and powered by ragdoll physics, this party title thrives on chaos, with every punch, toss, and fall bringing laughter and unpredictable fun. It's a party game favorite for casual gaming nights and online showdowns.",
+      controls: "Use a mouse to play the game.",
+    },
+  },
+  {
+    "name": "Totally Accurate Battle Simulator",
+    "icon": "/images/crazycattle/data image game totally-accurate-battle-simulator.jpg.png",
+    "url": "https://crazycattle-3d.io/totally-accurate-battle-simulator.embed",
+    info: {
+      developer: "Crazy Sheep 3D",
+      rating: "8.9 (338,606 votes)",
+      votes: "476",
+      released: "October 2024",
+      lastUpdated: "Nov 20, 2024",
+      technology: "HTML5",
+      platform: "Browser (desktop, mobile, tablet)",
+      tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
+      description: "Totally Accurate Battle Simulator (TABS) is a wildly entertaining physics-based strategy game where you create and watch hilarious battles unfold between absurd armies. From ancient warriors to bizarre creatures, every match is a blend of tactical planning and ragdoll chaos that delivers unpredictable fun every time.",
       controls: "Use a mouse to play the game.",
     },
   },
@@ -197,21 +316,7 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
 
           <div className="lg:w-3/4 relative">
             {/* 全屏按钮 */}
-            <button
-              onClick={handleFullscreen}
-              className="absolute top-4 right-4 z-10 bg-gray-800 bg-opacity-75 p-2 rounded-lg hover:bg-gray-700 transition-colors"
-              aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-            >
-              {isFullscreen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 9L4 4m0 0l5 5m-5-5v5m16-5l-5 5m5-5v5m0 11l-5-5m5 5h-5m-11 0l5-5m-5 5v-5" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0 0l-5-5m-7 11h4m0 0v4m0-4l-5 5m11-5h-4m4 0v4m0-4l-5 5" />
-                </svg>
-              )}
-            </button>
+
 
             {/* iframe */}
             <div ref={containerRef} className="relative pt-[56.25%] bg-black rounded-lg overflow-hidden">
