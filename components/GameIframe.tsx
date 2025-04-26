@@ -72,7 +72,7 @@ const games = [
       technology: "HTML5",
       platform: "Browser (desktop, mobile, tablet)",
       tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
-      description: "Get ready for the wildest and most thrilling sheep battle royale experience with Crazy Cattle 3D Unlimited! This highly anticipated release takes everything fans loved about the previous installments and cranks it up a notch, offering unlimited fun, intense physics, and a fresh new twist to the genre.",
+      description: "Crazy Chicken 3D is a chaotic chicken-themed battle royale rage game built in Godot. Fight, survive, and flap your way to the top in this fan-made frenzy!",
       controls: "Use a mouse to play the game.",
     },
   },
