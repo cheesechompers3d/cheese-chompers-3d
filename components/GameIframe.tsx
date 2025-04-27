@@ -8,7 +8,7 @@ const games = [
   {
     name: "Cheese Chompers 3D",
     icon: "/images/crazycattle/Cheese Chompers 3D.jpg",
-    url: "https://html-classic.itch.zone/html/13493920/CheeseChompers3DWeb/index.html",
+    url: "https://html-classic.itch.zone/html/13500521/CheeseChompers3DWeb/index.html",
     info: {
       developer: "Cheese Chompers 3D",
       rating: "8.9 (338,606 votes)",
