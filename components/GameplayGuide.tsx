@@ -10,39 +10,48 @@ const GameplayGuide = () => {
           {/* Introduction */}
           <div className="bg-gray-800 rounded-lg p-12">
             <p className="text-gray-300 leading-relaxed text-lg max-w-[1400px] mx-auto">
-              Cheese Chompers 3D delivers fast, energetic action with a unique twist. Instead of sheep, you control wobbly 3D rats as they clash and collide across a single, chaotic map. The game’s entire interface and sound design have been remastered to match the rodent rampage theme, giving it a totally fresh feel. One of the most exciting touches is the explosion effect when you successfully knock another rat off the arena—adding satisfying impact and visual flair to every takedown. Though it's still in alpha-beta and only includes one map (with no visible player counter), the core loop is full of fast-paced fun. Mid-air flips grant a temporary speed boost during jumps, letting you close in on rivals or escape danger with finesse.
+              Cheese Chompers 3D delivers fast, energetic action with a unique twist. Instead of sheep, you control wobbly 3D rats as they clash and collide across a single, chaotic map. The game's entire interface and sound design have been remastered to match the rodent rampage theme, giving it a totally fresh feel. One of the most exciting touches is the explosion effect when you successfully knock another rat off the arena—adding satisfying impact and visual flair to every takedown. Though it's still in alpha-beta and only includes one map (with no visible player counter), the core loop is full of fast-paced fun. Mid-air flips grant a temporary speed boost during jumps, letting you close in on rivals or escape danger with finesse.
             </p>
           </div>
 
         </div>
 
-        {/* Gameplay Video */}
+        {/* Gameplay Videos */}
         <div className="container mx-auto rounded-lg p-12">
-          <h3 className="text-2xl font-bold mb-8">Gameplay Video</h3>
-          <div className="max-w-[1400px] mx-auto h-[800px]">
-            <iframe
-                src="https://www.youtube.com/embed/zU0L5ueGA3o?si=weRGQxlS3u9V1u3O"
-                title="Official Gameplay Trailer"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full rounded-lg"
-            ></iframe>
+          <h3 className="text-2xl font-bold mb-8">Gameplay Videos</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1400px] mx-auto">
+            {/* Official Gameplay Trailer */}
+            <div className="space-y-4">
+              <div className="aspect-video">
+                <iframe
+                    src="https://www.youtube.com/embed/zU0L5ueGA3o?si=weRGQxlS3u9V1u3O"
+                    title="Official Gameplay Trailer"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full rounded-lg"
+                />
+              </div>
+              <p className="text-gray-300 text-lg text-center">
+                Official Gameplay Trailer
+              </p>
+            </div>
+            
+            {/* Behind The Scenes Video */}
+            <div className="space-y-4">
+              <div className="aspect-video">
+                <iframe
+                    src="https://www.youtube.com/embed/zU0L5ueGA3o?si=weRGQxlS3u9V1u3O"
+                    title="Behind The Scenes: Making of Cheese Chompers"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full rounded-lg"
+                />
+              </div>
+              <p className="text-gray-300 text-lg text-center">
+                Behind The Scenes: Making of Cheese Chompers
+              </p>
+            </div>
           </div>
-          <p className="text-gray-300 text-lg text-center mt-6">
-            Official Gameplay Trailer
-          </p>
-          <div className="max-w-[1400px] mx-auto h-[800px]">
-            <iframe
-                src="https://www.youtube.com/embed/zU0L5ueGA3o?si=weRGQxlS3u9V1u3O"
-                title="Behind The Scenes: Making of Cheese Chompers"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full rounded-lg"
-            ></iframe>
-          </div>
-          <p className="text-gray-300 text-lg text-center mt-6">
-            Behind The Scenes: Making of Cheese Chompers
-          </p>
         </div>
       </div>
     </section>

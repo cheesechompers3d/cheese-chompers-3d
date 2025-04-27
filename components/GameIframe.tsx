@@ -1,14 +1,33 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
-import {document} from "postcss";
 
-const games = [
+interface Game {
+  name: string;
+  icon: string;
+  url: string;
+  previewImage?: string;
+  info: {
+    developer: string;
+    rating: string;
+    votes: string;
+    released: string;
+    lastUpdated: string;
+    technology: string;
+    platform: string;
+    tags: string[];
+    description: string;
+    controls: string;
+  };
+}
+
+const games: Game[] = [
   {
     name: "Cheese Chompers 3D",
     icon: "/images/crazycattle/Cheese Chompers 3D.jpg",
-    url: "https://html-classic.itch.zone/html/13500521/CheeseChompers3DWeb/index.html",
+    url: "https://cheesechompers3d.itch.io/cheese-chompers-3d",
+    previewImage: "/images/crazycattle/Cheese Chompers 3D.jpg",
     info: {
       developer: "Cheese Chompers 3D",
       rating: "8.9 (338,606 votes)",
@@ -28,6 +47,7 @@ const games = [
     name: "Crazy Cattle 3D (Mobile Browser Version)",
     icon: "/images/crazycattle/crazy-cattle-3d-m160x96.jpg",
     url: "https://smash-karts.org/crazy-cattle-3d.embed",
+    previewImage: "/images/crazycattle/crazy-cattle-3d-m160x96.jpg",
     info: {
       developer: "Crazy Cattle 3D (Mobile Browser Version)",
       rating: "8.9 (338,606 votes)",
@@ -46,6 +66,7 @@ const games = [
     "name": "Crazy Kitty 3D",
     "icon": "/images/crazycattle/Crazy Kitty 3D.jpg",
     "url": "https://html-classic.itch.zone/html/13447164/Website/index.html",
+    previewImage: "/images/crazycattle/Crazy Kitty 3D.jpg",
     info: {
       developer: "Crazy Cattle 3D Web Port",
       rating: "8.9 (338,606 votes)",
@@ -63,6 +84,7 @@ const games = [
     "name": "Crazy Chicken 3D",
     "icon": "/images/crazycattle/Crazy Chicken 3D.jpg",
     "url": "https://html-classic.itch.zone/html/13448030/crazychicken%20web%20port/index.html",
+    previewImage: "/images/crazycattle/Crazy Chicken 3D.jpg",
     info: {
       developer: "Crazy Chicken 3D Game",
       rating: "8.9 (338,606 votes)",
@@ -80,6 +102,7 @@ const games = [
     name: "Crazy Cattle 3D Plus",
     icon: "/images/crazycattle/Crazy Cattle 3D Plus.jpg",
     url: "https://crazycattle-3d.io/crazy-cattle-3d-mobile-browser-version.embed",
+    previewImage: "/images/crazycattle/Crazy Cattle 3D Plus.jpg",
     info: {
       developer: "Crazy Cattle 3D Plus Game",
       rating: "8.9 (338,606 votes)",
@@ -97,11 +120,12 @@ const games = [
     name: "Crazy Sprunki 3D",
     icon: "/images/crazycattle/Crazy Sprunki 3D.jpg",
     url: "https://crazycattle-3d.io/crazy-sprunki-3d.embed",
+    previewImage: "/images/crazycattle/Crazy Sprunki 3D.jpg",
     info: {
       developer: "Crazy Sprunki 3D Game",
       rating: "8.9 (338,606 votes)",
       votes: "476",
-      released: "October 2024",
+      released: "October 忡024",
       lastUpdated: "Nov 20, 2024",
       technology: "HTML5",
       platform: "Browser (desktop, mobile, tablet)",
@@ -114,6 +138,7 @@ const games = [
     name: "Crazy Cattle 3D Deluxe",
     icon: "/images/crazycattle/crazy-cattle-3d-deluxe.jpg",
     url: "https://crazycattle-3d.io/crazy-cattle-3d-deluxe.embed",
+    previewImage: "/images/crazycattle/crazy-cattle-3d-deluxe.jpg",
     info: {
       developer: "Crazy Cattle 3D Deluxe",
       rating: "8.9 (338,606 votes)",
@@ -132,6 +157,7 @@ const games = [
     "name": "Crazy Cattle 3D",
     "icon": "/images/crazycattle/Crazy Cattle 3D.jpg",
     "url": "https://crazycattle-3d.io/crazy-cattle-3d.embed",
+    previewImage: "/images/crazycattle/Crazy Cattle 3D.jpg",
     info: {
       developer: "Crazy Cattle 3D",
       rating: "8.9 (338,606 votes)",
@@ -143,7 +169,7 @@ const games = [
       tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
       description: "Crazy Cattle 3D is not your average battle royale—this viral indie hit swaps out guns and grenades for sheep with attitude and physics-powered chaos! Released on April 12, 2025, by indie developer Anna (@4nn4t4t), this quirky gem has taken over TikTok and X (formerly Twitter) with meme-worthy clips and hilarious gameplay moments.\n" +
           "\n" +
-          "Instead of cattle, you'll control a numbered sheep and compete to knock other sheep off the map using speed, momentum, and a bit of woolly luck. The more powerful your charge, the bigger the impact—timing is everything! Whether you're dodging on desert dunes or slipping across icy Swedish fields, each match is a wild, unpredictable brawl that’ll have you laughing out loud.\n" +
+          "Instead of cattle, you'll control a numbered sheep and compete to knock other sheep off the map using speed, momentum, and a bit of woolly luck. The more powerful your charge, the bigger the impact—timing is everything! Whether you're dodging on desert dunes or slipping across icy Swedish fields, each match is a wild, unpredictable brawl that'll have you laughing out loud.\n" +
           "\n" +
           "With simple controls, a fun aesthetic, and three uniquely themed maps, Crazy Cattle 3D blends elements of Gang Beasts, Fall Guys, and Goat Simulator into one chaotic sheep showdown. Think you're ready to be the last woolly warrior standing? Let's dive in.",
       controls: "Use a mouse to play the game.",
@@ -153,6 +179,7 @@ const games = [
     "name": "Crazy Cattle 3D+",
     "icon": "/images/crazycattle/Crazy Cattle 3D+.jpg",
     "url": "https://crazycattle-3d.io/crazy-cattle-3d-.embed",
+    previewImage: "/images/crazycattle/Crazy Cattle 3D+.jpg",
     info: {
       developer: "Crazy Cattle 3D+",
       rating: "8.9 (338,606 votes)",
@@ -170,6 +197,7 @@ const games = [
     "name": "Fall Guys",
     "icon": "/images/crazycattle/Fall Guys.jpg",
     "url": "https://crazycattle-3d.io/crazy-cattle-3d-.embed",
+    previewImage: "/images/crazycattle/Fall Guys.jpg",
     info: {
       developer: "Fall Guys",
       rating: "8.9 (338,606 votes)",
@@ -187,6 +215,7 @@ const games = [
     "name": "Crazy Sheep 3D",
     "icon": "/images/crazycattle/Crazy Sheep 3D.jpg",
     "url": "https://play.gamepix.com/crazy-sheep/embed?sid=e4515",
+    previewImage: "/images/crazycattle/Crazy Sheep 3D.jpg",
     info: {
       developer: "Crazy Sheep 3D",
       rating: "8.9 (338,606 votes)",
@@ -196,7 +225,7 @@ const games = [
       technology: "HTML5",
       platform: "Browser (desktop, mobile, tablet)",
       tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
-      description: "Crazy Sheep 3D is a fast-paced, physics-powered animal battle game where fluffy sheep go head-to-head in chaotic arenas. Packed with bouncing bodies, ragdoll action, and hilarious knockouts, this game turns the barnyard into a battlefield. Whether you’re charging foes or dodging danger, every round is a wild ride.",
+      description: "Crazy Sheep 3D is a fast-paced, physics-powered animal battle game where fluffy sheep go head-to-head in chaotic arenas. Packed with bouncing bodies, ragdoll action, and hilarious knockouts, this game turns the barnyard into a battlefield. Whether you're charging foes or dodging danger, every round is a wild ride.",
       controls: "Use a mouse to play the game.",
     },
   },
@@ -204,6 +233,7 @@ const games = [
     "name": "Smash Karts",
     "icon": "/images/crazycattle/data image game smash-karts-game.jpg.png",
     "url": "https://crazycattle-3d.io/smash-karts.embed",
+    previewImage: "/images/crazycattle/data image game smash-karts-game.jpg.png",
     info: {
       developer: "Crazy Sheep 3D",
       rating: "8.9 (338,606 votes)",
@@ -213,7 +243,7 @@ const games = [
       technology: "HTML5",
       platform: "Browser (desktop, mobile, tablet)",
       tags: ["Casual 1,067", "Scratch 18", "Mobile 510", "Monster 198", "2D 798", "Music 21", "Mouse 1,366"],
-      description: "Whether you're racing for fun or blasting your way to the top, Smash Karts delivers non-stop action that keeps you coming back for more! Don’t hesitate, click Start Play to enjoy.",
+      description: "Whether you're racing for fun or blasting your way to the top, Smash Karts delivers non-stop action that keeps you coming back for more! Don't hesitate, click Start Play to enjoy.",
       controls: "Use a mouse to play the game.",
     },
   },
@@ -221,6 +251,7 @@ const games = [
     "name": "Animal Rampage 3D",
     "icon": "/images/crazycattle/data image game animal-rampage-3d.jpg.png",
     "url": "https://chillguyclicker.io/animal-rampage-3d.embed",
+    previewImage: "/images/crazycattle/data image game animal-rampage-3d.jpg.png",
     info: {
       developer: "Crazy Sheep 3D",
       rating: "8.9 (338,606 votes)",
@@ -238,6 +269,7 @@ const games = [
     "name": "Stumble Guys",
     "icon": "/images/crazycattle/data image game stumble-guys-game.jpg.png",
     "url": "https://crazycattle-3d.io/stumble-guys.embed",
+    previewImage: "/images/crazycattle/data image game stumble-guys-game.jpg.png",
     info: {
       developer: "Stumble Guys",
       rating: "8.9 (338,606 votes)",
@@ -255,6 +287,7 @@ const games = [
     "name": "Party Animals",
     "icon": "/images/crazycattle/data image game party-animals.jpg.png",
     "url": "https://chillguyclicker.io/animal-rampage-3d.embed",
+    previewImage: "/images/crazycattle/data image game party-animals.jpg.png",
     info: {
       developer: "Party Animals",
       rating: "8.9 (338,606 votes)",
@@ -272,6 +305,7 @@ const games = [
     "name": "Totally Accurate Battle Simulator",
     "icon": "/images/crazycattle/data image game totally-accurate-battle-simulator.jpg.png",
     "url": "https://crazycattle-3d.io/totally-accurate-battle-simulator.embed",
+    previewImage: "/images/crazycattle/data image game totally-accurate-battle-simulator.jpg.png",
     info: {
       developer: "Crazy Sheep 3D",
       rating: "8.9 (338,606 votes)",
@@ -296,15 +330,64 @@ interface GameIframeProps {
 
 export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: GameIframeProps) {
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const [isGameStarted, setIsGameStarted] = useState(false)
 
   const selectedGame = games.find((game) => game.name === currentGame) || games[0]
 
-  // 强制声明为标准的 Document 类型
-  const handleFullscreen = () => {
-
+  // 处理模态框关闭
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setIsGameStarted(false)
   }
+
+  // 处理游戏开始
+   // 处理游戏开始
+   const handleStartGame = () => {
+    const width = Math.min(1200, window.screen.width * 0.9)
+    const height = Math.min(800, window.screen.height * 0.9)
+    const left = (window.screen.width - width) / 2
+    const top = (window.screen.height - height) / 2
+    const features = `width=${width},height=${height},left=${left},top=${top},menubar=no,toolbar=no,location=no,status=no,scrollbars=yes`
+    window.open(selectedGame.url, `game_${selectedGame.name}`, features)
+  }
+
+  // 处理点击外部关闭
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        handleCloseModal()
+      }
+    }
+
+    if (isModalOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isModalOpen])
+
+  // 处理 ESC 键关闭
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        handleCloseModal()
+      }
+    }
+
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleEscKey)
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKey)
+    }
+  }, [isModalOpen])
 
   return (
     <section className="py-6">
@@ -313,21 +396,81 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
           Play {selectedGame.name}
         </h2>
         <div className="flex flex-col lg:flex-row gap-8">
-
           <div className="lg:w-3/4 relative">
-            {/* 全屏按钮 */}
-
-
-            {/* iframe */}
+            {/* 游戏预览区域 */}
             <div ref={containerRef} className="relative pt-[56.25%] bg-black rounded-lg overflow-hidden">
-              <iframe
-                ref={iframeRef}
-                src={selectedGame.url}
-                className="absolute top-0 left-0 w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              {/* 预览图片和遮罩层 */}
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${selectedGame.previewImage || "/game-preview-default.jpg"})`
+                }}
+              >
+                <div className="absolute inset-0 bg-black/75 backdrop-blur-sm flex flex-col items-center justify-center p-8">
+                  <div className="w-32 h-32 md:w-40 md:h-40 mb-6 rounded-2xl overflow-hidden shadow-xl ring-4 ring-blue-500/50">
+                    <img
+                      src={selectedGame.previewImage || "/game-preview-default.jpg"}
+                      alt={`${selectedGame.name} Preview`}
+                      className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 text-center">
+                    {selectedGame.name}
+                  </h3>
+                 
+                  <button
+                    onClick={handleStartGame}
+                    className="group relative inline-flex items-center justify-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full overflow-hidden transition-all duration-300 shadow-lg hover:shadow-blue-500/50"
+                  >
+                    <span className="relative flex items-center">
+                      <span className="mr-2">Play Now</span>
+                      <svg
+                        className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+
+                  
+                </div>
+              </div>
             </div>
+
+            {/* 游戏模态框 */}
+            {isModalOpen && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm">
+                <div
+                  ref={modalRef}
+                  className="relative w-[90vw] h-[90vh] bg-black rounded-xl overflow-hidden"
+                >
+                  <button
+                    onClick={handleCloseModal}
+                    className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/75 rounded-full text-white transition-colors"
+                  >
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                  <iframe
+                    ref={iframeRef}
+                    src={selectedGame.url}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            )}
 
             {selectedGame.info && (
               <>
