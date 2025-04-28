@@ -335,8 +335,77 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
   const containerRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const [isGameStarted, setIsGameStarted] = useState(false)
+  const adContainerRef = useRef<HTMLDivElement>(null)
+  const previewRef = useRef<HTMLDivElement>(null)
 
   const selectedGame = games.find((game) => game.name === currentGame) || games[0]
+
+  // 处理游戏选择
+  const handleGameSelect = (gameName: string) => {
+    onGameSelect(gameName)
+    // 滚动到预览区域
+    if (previewRef.current) {
+      previewRef.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'center'
+      })
+    }
+  }
+
+  // 初始化弹窗广告（只在组件首次加载时执行一次）
+  useEffect(() => {
+    // 检查是否已经存在相同的脚本
+    const existingScript = document.querySelector('script[src="//pl26499482.profitableratecpm.com/30/eb/06/30eb06cbe69c63cc1cdb9466d5023d8b.js"]')
+    if (!existingScript) {
+      // 创建新的脚本元素
+      const popupScript = document.createElement('script')
+      popupScript.type = 'text/javascript'
+      popupScript.src = '//pl26499482.profitableratecpm.com/30/eb/06/30eb06cbe69c63cc1cdb9466d5023d8b.js'
+      
+      // 将脚本添加到 head 标签
+      document.head.appendChild(popupScript)
+    }
+
+    // 不需要清理函数，因为我们希望广告脚本在整个会话期间保持活跃
+  }, []) // 空依赖数组，表示只在组件挂载时执行一次
+
+  // 初始化横幅广告（每次游戏切换时执行）
+  useEffect(() => {
+    // 清理旧的广告内容
+    if (adContainerRef.current) {
+      adContainerRef.current.innerHTML = ''
+    }
+
+    // 横幅广告
+    const script1 = document.createElement('script')
+    script1.type = 'text/javascript'
+    script1.text = `
+      window.atOptions = {
+        'key' : '00333dcd1291853aa8155cd887693c73',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+    `
+    
+    const script2 = document.createElement('script')
+    script2.type = 'text/javascript'
+    script2.src = '//www.highperformanceformat.com/00333dcd1291853aa8155cd887693c73/invoke.js'
+    
+    // 添加横幅广告脚本到容器
+    if (adContainerRef.current) {
+      adContainerRef.current.appendChild(script1)
+      adContainerRef.current.appendChild(script2)
+    }
+
+    // 清理函数
+    return () => {
+      if (adContainerRef.current) {
+        adContainerRef.current.innerHTML = ''
+      }
+    }
+  }, [currentGame])
 
   // 处理模态框关闭
   const handleCloseModal = () => {
@@ -397,19 +466,28 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
         </h2>
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="lg:w-3/4 relative">
+            {/* 广告容器 */}
+            <div className="w-full flex justify-center items-center mb-4">
+              <div 
+                ref={adContainerRef} 
+                className="min-h-[90px]"
+              />
+            </div>
+            
             {/* 游戏预览区域 */}
             <div ref={containerRef} className="relative pt-[56.25%] bg-black rounded-lg overflow-hidden">
               {/* 预览图片和遮罩层 */}
               <div
+                ref={previewRef}
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: `url(${selectedGame.previewImage || "/game-preview-default.jpg"})`
+                  backgroundImage: `url(${selectedGame.previewImage || "/images/crazycattle/Cheese Chompers 3D.jpg"})`
                 }}
               >
                 <div className="absolute inset-0 bg-black/75 backdrop-blur-sm flex flex-col items-center justify-center p-8">
                   <div className="w-32 h-32 md:w-40 md:h-40 mb-6 rounded-2xl overflow-hidden shadow-xl ring-4 ring-blue-500/50">
                     <img
-                      src={selectedGame.previewImage || "/game-preview-default.jpg"}
+                      src={selectedGame.previewImage || "/images/crazycattle/Cheese Chompers 3D.jpg"}
                       alt={`${selectedGame.name} Preview`}
                       className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"
                     />
@@ -525,7 +603,7 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
                 <div
                   key={index}
                   className={`flex flex-col items-center cursor-pointer hover:scale-105 transition-transform`}
-                  onClick={() => onGameSelect(game.name)}
+                  onClick={() => handleGameSelect(game.name)}
                 >
                   <Image
                     src={game.icon}
