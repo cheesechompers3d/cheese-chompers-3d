@@ -26,7 +26,7 @@ const games: Game[] = [
   {
     name: "Cheese Chompers 3D",
     icon: "/images/crazycattle/Cheese Chompers 3D.jpg",
-    url: "https://cheesechompers3d.itch.io/cheese-chompers-3d",
+    url: "https://rawcdn.githack.com/gn-math/assets/main/165/index.html",
     previewImage: "/images/crazycattle/Cheese Chompers 3D.jpg",
     info: {
       developer: "Cheese Chompers 3D",
@@ -330,10 +330,8 @@ interface GameIframeProps {
 
 export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: GameIframeProps) {
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const modalRef = useRef<HTMLDivElement>(null)
   const [isGameStarted, setIsGameStarted] = useState(false)
   const adContainerRef = useRef<HTMLDivElement>(null)
   const previewRef = useRef<HTMLDivElement>(null)
@@ -343,6 +341,7 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
   // 处理游戏选择
   const handleGameSelect = (gameName: string) => {
     onGameSelect(gameName)
+    setIsGameStarted(false)
     // 滚动到预览区域
     if (previewRef.current) {
       previewRef.current.scrollIntoView({ 
@@ -351,6 +350,38 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
       })
     }
   }
+
+  // 处理游戏开始
+  const handleStartGame = () => {
+    setIsGameStarted(true)
+  }
+
+  // 处理全屏切换
+  const handleFullscreenToggle = () => {
+    if (!containerRef.current) return
+
+    if (!isFullscreen) {
+      if (containerRef.current.requestFullscreen) {
+        containerRef.current.requestFullscreen()
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen()
+      }
+    }
+  }
+
+  // 监听全屏状态变化
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement)
+    }
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange)
+    }
+  }, [])
 
   // 初始化弹窗广告（只在组件首次加载时执行一次）
   useEffect(() => {
@@ -365,9 +396,7 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
       // 将脚本添加到 head 标签
       document.head.appendChild(popupScript)
     }
-
-    // 不需要清理函数，因为我们希望广告脚本在整个会话期间保持活跃
-  }, []) // 空依赖数组，表示只在组件挂载时执行一次
+  }, [])
 
   // 初始化横幅广告（每次游戏切换时执行）
   useEffect(() => {
@@ -407,57 +436,6 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
     }
   }, [currentGame])
 
-  // 处理模态框关闭
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setIsGameStarted(false)
-  }
-
-  // 处理游戏开始
-   // 处理游戏开始
-   const handleStartGame = () => {
-    const width = Math.min(1200, window.screen.width * 0.9)
-    const height = Math.min(800, window.screen.height * 0.9)
-    const left = (window.screen.width - width) / 2
-    const top = (window.screen.height - height) / 2
-    const features = `width=${width},height=${height},left=${left},top=${top},menubar=no,toolbar=no,location=no,status=no,scrollbars=yes`
-    window.open(selectedGame.url, `game_${selectedGame.name}`, features)
-  }
-
-  // 处理点击外部关闭
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-        handleCloseModal()
-      }
-    }
-
-    if (isModalOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [isModalOpen])
-
-  // 处理 ESC 键关闭
-  useEffect(() => {
-    const handleEscKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        handleCloseModal()
-      }
-    }
-
-    if (isModalOpen) {
-      document.addEventListener('keydown', handleEscKey)
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscKey)
-    }
-  }, [isModalOpen])
-
   return (
     <section className="py-6">
       <div className="mx-auto px-4">
@@ -474,88 +452,88 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
               />
             </div>
             
-            {/* 游戏预览区域 */}
+            {/* 游戏区域 */}
             <div ref={containerRef} className="relative pt-[56.25%] bg-black rounded-lg overflow-hidden">
-              {/* 预览图片和遮罩层 */}
-              <div
-                ref={previewRef}
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${selectedGame.previewImage || "/images/crazycattle/Cheese Chompers 3D.jpg"})`
-                }}
-              >
-                <div className="absolute inset-0 bg-black/75 backdrop-blur-sm flex flex-col items-center justify-center p-8">
-                  <div className="w-32 h-32 md:w-40 md:h-40 mb-6 rounded-2xl overflow-hidden shadow-xl ring-4 ring-blue-500/50">
-                    <img
-                      src={selectedGame.previewImage || "/images/crazycattle/Cheese Chompers 3D.jpg"}
-                      alt={`${selectedGame.name} Preview`}
-                      className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"
-                    />
-                  </div>
-
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 text-center">
-                    {selectedGame.name}
-                  </h3>
-                 
-                  <button
-                    onClick={handleStartGame}
-                    className="group relative inline-flex items-center justify-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full overflow-hidden transition-all duration-300 shadow-lg hover:shadow-blue-500/50"
-                  >
-                    <span className="relative flex items-center">
-                      <span className="mr-2">Play Now</span>
-                      <svg
-                        className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    </span>
-                  </button>
-
-                  
-                </div>
-              </div>
-            </div>
-
-            {/* 游戏模态框 */}
-            {isModalOpen && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm">
+              {!isGameStarted ? (
+                // 预览图片和遮罩层
                 <div
-                  ref={modalRef}
-                  className="relative w-[90vw] h-[90vh] bg-black rounded-xl overflow-hidden"
+                  ref={previewRef}
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(${selectedGame.previewImage || "/images/crazycattle/Cheese Chompers 3D.jpg"})`
+                  }}
                 >
-                  <button
-                    onClick={handleCloseModal}
-                    className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/75 rounded-full text-white transition-colors"
-                  >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
+                  <div className="absolute inset-0 bg-black/75 backdrop-blur-sm flex flex-col items-center justify-center p-8">
+                    <div className="w-32 h-32 md:w-40 md:h-40 mb-6 rounded-2xl overflow-hidden shadow-xl ring-4 ring-blue-500/50">
+                      <img
+                        src={selectedGame.previewImage || "/images/crazycattle/Cheese Chompers 3D.jpg"}
+                        alt={`${selectedGame.name} Preview`}
+                        className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 text-center">
+                      {selectedGame.name}
+                    </h3>
+                   
+                    <button
+                      onClick={handleStartGame}
+                      className="group relative inline-flex items-center justify-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full overflow-hidden transition-all duration-300 shadow-lg hover:shadow-blue-500/50"
+                    >
+                      <span className="relative flex items-center">
+                        <span className="mr-2">Play Now</span>
+                        <svg
+                          className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  {/* 游戏 iframe */}
                   <iframe
                     ref={iframeRef}
                     src={selectedGame.url}
-                    className="w-full h-full"
+                    className="absolute inset-0 w-full h-full"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
-                </div>
-              </div>
-            )}
+                  {/* 全屏按钮 */}
+                  <button
+                    onClick={handleFullscreenToggle}
+                    className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/75 rounded-full text-white transition-colors"
+                    title={isFullscreen ? "退出全屏" : "进入全屏"}
+                  >
+                    {isFullscreen ? (
+                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20H5V16M15 20H19V16M9 4H5V8M15 4H19V8" />
+                      </svg>
+                    ) : (
+                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4M4 4H8M4 4L9 9M20 8V4M20 4H16M20 4L15 9M4 16V20M4 20H8M4 20L9 15M20 16V20M20 20H16M20 20L15 15" />
+                      </svg>
+                    )}
+                  </button>
+                </>
+              )}
+            </div>
 
             {selectedGame.info && (
               <>
-                <div className="bg-gray-800 p-6 rounded-lg mb-8">
+                <div className="bg-gray-800 p-6 rounded-lg mb-8 mt-8">
                   <h3 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-gray-300' : 'text-black'}`}>Game Information</h3>
-
-                <div>
+                  <div>
                     <p className={`mt-2 ${isDarkMode ? 'text-gray-300' : 'text-black'}`}>{selectedGame.info.description}</p>
                   </div>
                 </div>
@@ -613,9 +591,7 @@ export default function GameIframe({ currentGame, onGameSelect, isDarkMode }: Ga
                     className="rounded-lg object-cover w-full"
                   />
                   <span className={`mt-2 text-sm text-center ${isDarkMode ?  'text-white' : 'text-black'}`} style={{ maxWidth: '300px' }}>
-
-                  {game.name}
-
+                    {game.name}
                   </span>
                 </div>
               ))}
